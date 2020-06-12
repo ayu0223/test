@@ -11,6 +11,7 @@ from linebot.models import (
     FollowEvent, MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage, TemplateSendMessage, ButtonsTemplate, PostbackTemplateAction, MessageTemplateAction, URITemplateAction
 )
 import os
+import boto3
 
 # 軽量なウェブアプリケーションフレームワーク:Flask
 app = Flask(__name__)
