@@ -121,14 +121,14 @@ def handle_image(event):
     # S3へ画像を保存
     s3 = boto3.client('s3')
     filename = message_id + '.jpg' # メッセージIDをファイル名とする
-    s3.put_object(Bucket='backetを指定', Body=image,  Key=filename)
+    s3.put_object(Bucket='s0223', Body=image,  Key=filename)
 
 # Rekognition呼び出し
     rekognition = boto3.client('rekognition')
     response = rekognition.detect_faces(
         Image={
             'S3Object': {
-                'Bucket': 'backetを指定',
+                'Bucket': 's0223',
                 'Name': filename
             }
         },
