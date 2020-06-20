@@ -15,6 +15,8 @@ import os
 
 import random
 
+import boto3
+
 app = Flask(__name__)
 
 LINE_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
