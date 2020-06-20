@@ -121,7 +121,7 @@ def handle_image(event):
     # S3へ画像を保存
     s3 = boto3.client('s3',region_name='ap-northeast-1')
     filename = message_id + '.jpg' # メッセージIDをファイル名とする
-    s3.put_object(Bucket='s0223', Body=image,  Key=filename)
+    s3.put_object(Bucket='s0223/TEST', Body=image,  Key=filename)
 
 # Rekognition呼び出し
     rekognition = boto3.client('rekognition')
