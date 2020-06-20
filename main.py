@@ -119,7 +119,7 @@ def handle_image(event):
     image = image_bin.getvalue()
 
     # S3へ画像を保存
-    s3 = boto3.client('s3')
+    s3 = boto3.client('s3',region_name='ap-northeast-1')
     filename = message_id + '.jpg' # メッセージIDをファイル名とする
     s3.put_object(Bucket='s0223', Body=image,  Key=filename)
 
