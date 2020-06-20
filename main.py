@@ -19,6 +19,8 @@ app = Flask(__name__)
 
 LINE_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
 LINE_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
+AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
 
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
@@ -119,7 +121,7 @@ def handle_image(event):
     image = image_bin.getvalue()
 
     # S3へ画像を保存
-    s3 = boto3.client('s3',region_name='ap-northeast-1')
+    s3 = boto3.client('s3',aws_access_key_id='AWS_ACCESS_KEY_ID' , aws_secret_access_key='AWS_SECRET_ACCESS_KEY',region_name='ap-northeast-1')
     filename = message_id + '.jpg' # メッセージIDをファイル名とする
     s3.put_object(Bucket='s0223/TEST', Body=image,  Key=filename)
 
